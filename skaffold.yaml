@@ -1,0 +1,13 @@
+apiVersion: skaffold/v2beta2
+kind: Config
+metadata:
+  name: mynginx
+build:
+  artifacts:
+  - image: ivekov/ivekov
+deploy:
+  kubectl:
+    manifests:
+    - deployment.yaml
+    - service.yaml
+    - ingress.yaml

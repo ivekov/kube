@@ -1,0 +1,33 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+    name: myapp-deployment
+spec:
+    replicas: 2
+    selector:
+       matchLabels:
+          app: myapp
+    template:
+       metadata:
+          labels:
+             app: myapp
+       spec:
+          containers:
+          - name: myapp
+            image: ivekov/ivekov:nginx
+            ports:
+              - name: web
+                containerPort: 8000
+            livenessProbe:
+              httpGet:
+                port: 8000
+                path: /otusapp/
+              initialDelaySeconds: 10
+              periodSeconds: 5
+              timeoutSeconds: 2
+            readinessProbe:
+              httpGet:
+                port: 8000
+                path: /otusapp/health
+              initialDelaySeconds: 10
+              periodSeconds: 5
