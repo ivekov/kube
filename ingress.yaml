@@ -6,7 +6,7 @@ metadata:
     nginx.ingress.kubernetes.io/rewrite-target: /$2
 spec:
   rules:
-  - host: xn----7sbhdycib3bahm3ad4m.xn--p1ai
+  - host: arch.homework
     http:
       paths:
         - path: /otusapp($|/)(.*)
